@@ -1,17 +1,22 @@
-function [newAntGrid, newPherGrid] = walk(antGrid, pherGrid,alarm) 
+function [newAntGrid, newPherGrid,newAlarmGrid] = walk(antGrid, pherGrid,alarmGrid) 
 % WALK - Function to return a new ant and pheromone grids after each ant
 % has moved or decided to remain in its current location
-global EMPTY NORTH EAST SOUTH WEST NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST STAY EVAPORATE THRESHOLD DEPOSIT
+global EMPTY NORTH EAST SOUTH WEST NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST STAY EVAPORATE THRESHOLD DEPOSIT ALARM
 
 n = length(antGrid) - 2;
 newAntGrid = antGrid;
 newPherGrid = pherGrid;
+newAlarmGrid = alarmGrid;
 
 for i = 2:n+1
     for j = 2:n+1
         if (i == n+1 && j == n+1)
-            
+            newAntGrid(i,j) = EMPTY;
+            newAlarmGrid(i,j)=alarmGrid(i,j)+ALARM;
+        end
+        
         if(antGrid(i, j) == EMPTY)
+            newAlarmGrid(i,j)=alarmGrid(i,j);
             newPherGrid(i, j) = max([newPherGrid(i, j) - EVAPORATE, 0]);
         end
         % else if can move in desired direction (no ant there now and no ant 
@@ -21,6 +26,7 @@ for i = 2:n+1
         if(antGrid(i,j) == NORTH) 
             if(newAntGrid(i-1,j) == EMPTY) % can move 
                 if(newPherGrid(i,j) > THRESHOLD)
+                    newAlarmGrid(i,j)=alarmGrid(i,j);
                     newPherGrid(i,j) = newPherGrid(i,j) + DEPOSIT;
                 end
                 newAntGrid(i,j) = EMPTY;

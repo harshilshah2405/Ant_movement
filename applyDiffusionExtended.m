@@ -23,6 +23,6 @@ for i = 2:n+1
         SW = alarmGrid(i+1, j-1);
         W = alarmGrid(i, j-1);
         NW = alarmGrid(i-1, j-1);
-        newAlarmGrid = diffusionPher(diffusionRate, site, N, NE, E, SE, S, SW, W, NW);
+        newAlarmGrid(i, j) = diffusionPher(diffusionRate, site, N, NE, E, SE, S, SW, W, NW);
     end
 end

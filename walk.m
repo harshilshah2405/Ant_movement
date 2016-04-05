@@ -6,8 +6,7 @@ global EMPTY NORTH EAST SOUTH WEST NORTHEAST NORTHWEST SOUTHEAST SOUTHWEST STAY 
 n = length(antGrid) - 2;
 newAntGrid = antGrid;
 newPherGrid = pherGrid;
-newAlarmGrid = alarmGrid;
-
+newAlarmGrid=alarmGrid;
 for i = 2:n+1
     for j = 2:n+1
         if (i == n+1 && j == n+1)

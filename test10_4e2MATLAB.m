@@ -1,11 +1,13 @@
 %  test10_4e2MATLAB.m
 
-global MAXPHER EVAPORATE DEPOSIT
+global MAXPHER EVAPORATE DEPOSIT ALARM EFFPHER EFFALARM
 
 MAXPHER = 50;
 EVAPORATE = 1;
 DEPOSIT = 2;
-
+ALARM = 10;
+EFFPHER = 0.5;
+EFFALARM = 0.5;
 %% Perform simulation and animation
 %%%rng(1); % seed random number generator
 n = 7;

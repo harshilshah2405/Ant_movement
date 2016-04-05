@@ -13,9 +13,9 @@ pherGrids(:, :, 1) = pherGrid;
 
 
 for i = 1:t
-    antGrid = applySenseExtended(antGrid,  pherGrid, alarmGrid);
-    [antGrid, pherGrid, alarmGrid] = walk(antGrid, pherGrid, alarmGrid);
-    [pherGrid, alarmGrid] = applyDiffusionExtended(pherGrid, alarmGrid, diffusionRate);
+    antGrid = applySenseExtended(antGrid, pherGrid);
+    [antGrid, pherGrid] = walk(antGrid, pherGrid);
+    pherGrid = applyDiffusionExtended(pherGrid, diffusionRate);
     antGrids(:, :, i+1) = antGrid;
     pherGrids(:, :, i+1) = pherGrid;
 end

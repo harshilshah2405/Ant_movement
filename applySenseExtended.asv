@@ -16,7 +16,7 @@ for i = 2:n+1
             Want = antGrid(i, j-1);
             NWant = antGrid(i-1,j-1);
             SWant = antGrid(i+1,j-1);
-            length(alarmGrid(:,1))
+            length(alarmGrid())
             Neff = EFFPHER*pherGrid(i-1, j)-EFFALARM*alarmGrid(i-1,j);
             Eeff = EFFPHER*pherGrid(i, j+1)-EFFALARM*alarmGrid(i,j+1);
             NEeff = EFFPHER*pherGrid(i-1, j+1)-EFFALARM*alarmGrid(i-1,j+1);
